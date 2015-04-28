@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.event.*;
-
+import java.awt.*;
 
 public class WarGame extends Deck{
 	
@@ -109,7 +109,7 @@ public class WarGame extends Deck{
 		//create game window
 		//jframe window length and height
 		final int winh = 800;
-		final int winl = 800;	
+		final int winl = 500;	
 				//initialize jframe for war game	
 				JFrame gameWar = new JFrame();
 				
@@ -125,14 +125,16 @@ public class WarGame extends Deck{
 				//name of window
 				gameWar.setTitle("War HUH What is it good for?");
 	
-	
+				//validate
+				gameWar.validate();
 				
 				
 				
 				
 				JPanel south = new JPanel();  //declare&initialize jpanel
-			      
-			  	
+			     //window colour
+				south.setBackground(Color.cyan);
+				
 			  	JButton newGame = new JButton("Start a New Game");
 			  	JButton dealButton = new JButton("Deal Next Hand");   
 				
@@ -144,9 +146,9 @@ public class WarGame extends Deck{
 				
 				south.add(newGame);
 				south.add(dealButton);
-				
+				newGame.validate();
 				newGame.setVisible(true);
-			  	
+			  	dealButton.setVisible(true);
 			  	
 			  	
 			  
@@ -162,13 +164,13 @@ public class WarGame extends Deck{
 				//start game panel and then button
 
 				
-				south.setSize(800, 800);
+				//south.setSize(800, 800);
 				
 				
 				//south.setLayout(null);
-				south.setBounds(400, 400, 400, 0);
+				//south.setBounds(400, 400, 400, 0);
 				
-				gameWar.add(south);
+				gameWar.add(south, BorderLayout.SOUTH);
 				
 				
 				
@@ -181,12 +183,114 @@ public class WarGame extends Deck{
 				//JPanel board = new JPanel();
 				
 				
+				//CENTER panel
+				
+				JPanel center = new JPanel();  //declare&initialize jpanel
+			     //window colour
+				center.setBackground(Color.yellow);
+				
+				//ImageIcon cardback = new ImageIcon("cardPics/back.jpg"); 
+				//cardback(this.getClass().getResource("/cardPics/back.JPEG"));
+				
+				JLabel oppCard = new JLabel("oppCard");
+				JLabel oppHand = new JLabel();
+				JLabel myHand = new JLabel();
+				JLabel myCard = new JLabel("myCard");
+			  	
+				
+				
+				oppHand.setIcon((new ImageIcon("cardPics/back.jpg")));
+				oppHand.setSize(150,150);
+				
+				myHand.setIcon((new ImageIcon("cardPics/back.jpg")));
+				myHand.setSize(150,150);
+				
+				center.add(oppCard);
+				center.add(oppHand);
+				center.add(myHand);
+				center.add(myCard);
+				
+				oppCard.setVisible(true);
+				oppHand.setVisible(true);
+				myHand.setVisible(true);
+				myCard.setVisible(true);
+			  	center.setVisible(true);
+			  	
+			  	
+			  
+				     
+				newGame.addActionListener(new StartGameListener());    //add specific listener to each button
+				dealButton.addActionListener(new DealButtonListener());     
+				 
+			  
+			
+				
+				
+				
+				//start game panel and then button
+
+				
+				//center.setSize(800, 800);
+				
+				
+				//south.setLayout(null);
+				//center.setBounds(400, 400, 400, 0);
+				
+				gameWar.add(center, BorderLayout.CENTER);
 				
 				
 				
 				
+				center.setVisible(true);
+
 				
 				
+				//North panel
+				
+				JPanel north = new JPanel();  //declare&initialize jpanel
+			     //window colour
+				north.setBackground(Color.cyan);
+				
+			  	JLabel gameLog = new JLabel("Hey guise!");  
+				
+			  	newGame.setSize(50,10);
+				dealButton.setSize(50,50);
+				
+				gameLog.setVisible(true);
+			
+				
+				north.add(gameLog);
+				//north.add();
+				
+				//newGame.setVisible(true);
+			  	
+			  	
+			  	
+			  
+				     
+				//newGame.addActionListener(new StartGameListener());    //add specific listener to each button
+				//dealButton.addActionListener(new DealButtonListener());     
+				 
+			  
+			
+				
+				
+				
+				//start game panel and then button
+
+				
+				//south.setSize(800, 800);
+				
+				
+				//south.setLayout(null);
+				//south.setBounds(400, 400, 400, 0);
+				
+				gameWar.add(north, BorderLayout.NORTH);
+				
+				
+				
+				
+				north.setVisible(true);
 				
 				
 				
@@ -235,7 +339,7 @@ public class WarGame extends Deck{
 	   {
 	      public void actionPerformed(ActionEvent e)
 	      {
-	          
+	          /*
 	    	  Deck thatDeck = new Deck();
 	    	  
 	    	  thatDeck.splitDeck();
@@ -243,7 +347,10 @@ public class WarGame extends Deck{
 	    	  
 	    	  
 	    	  
-	    	  thatDeck.splitDeck();
+	    	  thatDeck.splitDeck(); */
+	    	  
+	    	  dealCards();
+	    	  
 	    	  
 	    	  
 	   }
