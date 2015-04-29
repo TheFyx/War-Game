@@ -331,6 +331,11 @@ public class WarGame extends Deck{
 	          deck2.add(back);
 	          deck2.setVisible(true);
 	          
+	          shuffleCards();
+	          deal();
+	          
+	          
+	          
 	      }
 	   }
 	
@@ -349,9 +354,10 @@ public class WarGame extends Deck{
 	    	  
 	    	  thatDeck.splitDeck(); */
 	    	  
-	    	  dealCards();
+	    	  dealCards(); 
 	    	  
-	    	  
+	    	  currHandPlayer1.getCurrCardRank();
+	    	  currHandPlayer2.getCurrCardRank();
 	    	  
 	   }
 	

@@ -20,6 +20,11 @@ public class Hand {
 		return cardsInPlay.get(0).getRank();
 	}
 	
+	public String getCurrCardSuit(){
+		return cardsInPlay.get(0).getSuit();
+	}
+	
+	
 	public ArrayList<Card> getCardsInPlay(){
 		return cardsInPlay;
 	}
