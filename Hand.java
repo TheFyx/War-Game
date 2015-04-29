@@ -24,6 +24,10 @@ public class Hand {
 		return cardsInPlay.get(0).getSuit();
 	}
 	
+	public String getCurrCardImg(){
+		return cardsInPlay.get(0).getImg();
+	}
+	
 	
 	public ArrayList<Card> getCardsInPlay(){
 		return cardsInPlay;

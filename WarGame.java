@@ -12,6 +12,16 @@ public class WarGame extends Deck{
 	private Hand currHandPlayer2;
 	private String winner;
 	
+	
+	//global card placements
+	JLabel oppCard = new JLabel();
+	JLabel oppHand = new JLabel();
+	JLabel myHand = new JLabel();
+	JLabel myCard = new JLabel("myCard");
+	
+	//center panel global
+	JPanel center = new JPanel();  //declare&initialize jpanel
+	
 	public WarGame(){
 		this.warDeck = new Deck();
 		Hand[] temp = warDeck.splitDeck();
@@ -185,17 +195,14 @@ public class WarGame extends Deck{
 				
 				//CENTER panel
 				
-				JPanel center = new JPanel();  //declare&initialize jpanel
+				
 			     //window colour
 				center.setBackground(Color.yellow);
 				
 				//ImageIcon cardback = new ImageIcon("cardPics/back.jpg"); 
 				//cardback(this.getClass().getResource("/cardPics/back.JPEG"));
 				
-				JLabel oppCard = new JLabel("oppCard");
-				JLabel oppHand = new JLabel();
-				JLabel myHand = new JLabel();
-				JLabel myCard = new JLabel("myCard");
+				
 			  	
 				
 				
@@ -354,10 +361,17 @@ public class WarGame extends Deck{
 	    	  
 	    	  thatDeck.splitDeck(); */
 	    	  
-	    	  dealCards(); 
+	    	  deal(); 
 	    	  
-	    	  currHandPlayer1.getCurrCardRank();
+	    	  
+	    	  oppCard.setIcon((new ImageIcon("cardPics/"+currHandPlayer1.getCurrCardImg())));
+	    	  oppCard.setSize(150,150);
+	    	  center.add(oppCard);
+	    	  oppCard.setVisible(true);
+	    	  
 	    	  currHandPlayer2.getCurrCardRank();
+	    	  
+	    	  
 	    	  
 	   }
 	
