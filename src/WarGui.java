@@ -1,3 +1,8 @@
+//JAYSON CONYETTE-JAMES
+//CS110A SPRING 2015
+//ASSIGNMENT10: WAR GAME (FINAL HOMEWORK)
+//THIS IS THE GUI THAT WILL BE GENERATED FOR THE WAR GAME
+
 import javax.swing.*;
 import java.util.*;
 import java.util.ArrayList;
@@ -35,17 +40,11 @@ public class WarGui extends JFrame{
 		
 		public WarGui(){
 		
-		//wG.dealCards();
-		//System.out.println((wG.getCurrHandPlayer1().getCurrHand()));
-		//System.out.println((wG.getCurrHandPlayer1().getCurrCardSuit()));
-		//System.out.print("Hello world");
-		//System.out.println((wG.getCurrHandPlayer1().getCurrCardImg()));
+	
 		
 		
 			
 		
-		//create game window
-		//jframe window length and height
 		final int winh = 1200;
 		final int winl = 800;	
 				//initialize jframe for war game	
@@ -262,7 +261,7 @@ public class WarGui extends JFrame{
 	    	  center.add(myCard, BorderLayout.SOUTH);
 	    	  myCard.setVisible(true);
 	    	  
-	    	  //wG.getCurrHandPlayer2().getCurrCardRank();
+	    	  
 	    	  
 	    	  
 	    	  

@@ -1,3 +1,8 @@
+//JAYSON CONYETTE-JAMES
+//CS110A SPRING 2015
+//ASSIGNMENT10: WAR GAME (FINAL HOMEWORK)
+//THIS IS THE CLASS FOR GENERATING EACH CARD
+
 
 public class Card {
 	final String[] suits = {"s","h","d","c"};

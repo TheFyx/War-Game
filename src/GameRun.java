@@ -1,19 +1,15 @@
-
+//JAYSON CONYETTE-JAMES
+//CS110A SPRING 2015
+//ASSIGNMENT10: WAR GAME (FINAL HOMEWORK)
+//THIS IS THE DRIVER CLASS FOR THE WAR GAME 
 public class GameRun {
 
 	public static void main(String[] args)
 	{
 		
-		//WarGame sG =	new WarGame();
-		WarGui guiWar = new WarGui();
-		//sG.startGame();
-		//sG.dealCards();
-		//sG.deal();
 		
-		//while (sG.getWinner().equals(null)){
-			//sG.deal();
-		//}
-	
+		WarGui guiWar = new WarGui();
+		
 	
 	
 	
