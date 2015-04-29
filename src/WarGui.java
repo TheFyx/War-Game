@@ -24,13 +24,14 @@ public class WarGui extends JFrame{
 		JLabel oppCard = new JLabel();
 		JLabel oppHand = new JLabel();
 		JLabel myHand = new JLabel();
-		JLabel myCard = new JLabel("myCard");
+		JLabel myCard = new JLabel();
 		
 		//center panel global
 		JPanel center = new JPanel();  //declare&initialize jpanel
 		
 		
 		WarGame wG = new WarGame();
+		JFrame gameWar = new JFrame();
 		
 		public WarGui(){
 		
@@ -41,14 +42,14 @@ public class WarGui extends JFrame{
 		//System.out.println((wG.getCurrHandPlayer1().getCurrCardImg()));
 		
 		
-		
+			
 		
 		//create game window
 		//jframe window length and height
-		final int winh = 800;
-		final int winl = 500;	
+		final int winh = 1200;
+		final int winl = 800;	
 				//initialize jframe for war game	
-				JFrame gameWar = new JFrame();
+				
 				
 				//let app close on window close
 				gameWar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,8 +76,8 @@ public class WarGui extends JFrame{
 			  	JButton newGame = new JButton("Start a New Game");
 			  	JButton dealButton = new JButton("Deal Next Hand");   
 				
-			  	newGame.setSize(50,10);
-				dealButton.setSize(50,50);
+			  	newGame.setSize(100,100);
+				dealButton.setSize(100,100);
 				
 				
 			
@@ -98,14 +99,7 @@ public class WarGui extends JFrame{
 				
 				
 				
-				//start game panel and then button
-
 				
-				//south.setSize(800, 800);
-				
-				
-				//south.setLayout(null);
-				//south.setBounds(400, 400, 400, 0);
 				
 				gameWar.add(south, BorderLayout.SOUTH);
 				
@@ -139,6 +133,8 @@ public class WarGui extends JFrame{
 				myHand.setIcon((new ImageIcon("cardPics/back.jpg")));
 				myHand.setSize(150,150);
 				
+				
+				
 				center.add(oppCard);
 				center.add(oppHand);
 				center.add(myHand);
@@ -167,7 +163,7 @@ public class WarGui extends JFrame{
 				
 				
 				center.setVisible(true);
-
+				center.setSize(1200,600);
 				
 				
 				//North panel
@@ -178,9 +174,7 @@ public class WarGui extends JFrame{
 				
 			  	JLabel gameLog = new JLabel("Are you ready for WAR?!");  
 				
-			  	newGame.setSize(50,10);
-				dealButton.setSize(50,50);
-				
+			  	
 				gameLog.setVisible(true);
 			
 				
@@ -216,13 +210,13 @@ public class WarGui extends JFrame{
 	   {
 	      public void actionPerformed(ActionEvent e)
 	      {
-	    	  //ImageIcon cardback = new ImageIcon("cardPics/back.JPEG"); 
-	    	  //JLabel back = new JLabel(cardback);
+	    	  
 	    	  
 	    	  
 	        
-	          
-	          wG.dealCards();
+	    	  gameWar.dispose();
+	    	  WarGui GuiRestart = new WarGui();
+	    	  
 	          
 	          
 	          
@@ -256,13 +250,16 @@ public class WarGui extends JFrame{
 	    	  
 	    	  oppCard.setIcon(new ImageIcon(wG.getImgAdd1()));
 	    	  oppCard.setSize(150,150);
-	    	  center.add(oppCard);
+	    	  center.add(oppCard, BorderLayout.SOUTH);
 	    	  oppCard.setVisible(true);
+	    	  
+	    	  
+	    	  
 	    	  
 	    	  myCard.setVisible(false);
 	    	  myCard.setIcon(new ImageIcon(wG.getImgAdd2()));
 	    	  myCard.setSize(150,150);
-	    	  center.add(myCard);
+	    	  center.add(myCard, BorderLayout.SOUTH);
 	    	  myCard.setVisible(true);
 	    	  
 	    	  //wG.getCurrHandPlayer2().getCurrCardRank();
