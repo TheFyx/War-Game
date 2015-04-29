@@ -13,7 +13,7 @@ public class Card {
 
 		this.setRank(index % 13);
 		this.setSuit(suits[index/13]);
-		this.setImg("/cardPics/" + (rank + 1) + suit + ".jpeg");
+		this.setImg("cardPics/" + (rank + 1) + suit + ".jpg");
 
 		
 		/*//Error handle how drawing the 13rd card would result in incorrect suit

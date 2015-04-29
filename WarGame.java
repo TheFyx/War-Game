@@ -1,4 +1,7 @@
 import javax.swing.*;
+import java.util.*;
+import java.util.ArrayList;
+
 import java.awt.event.*;
 import java.awt.*;
 
@@ -13,6 +16,8 @@ public class WarGame extends Deck{
 	private String winner;
 	
 	
+	
+	
 	//global card placements
 	JLabel oppCard = new JLabel();
 	JLabel oppHand = new JLabel();
@@ -24,9 +29,26 @@ public class WarGame extends Deck{
 	
 	public WarGame(){
 		this.warDeck = new Deck();
+		shuffleCards();
+		
 		Hand[] temp = warDeck.splitDeck();
 		this.currHandPlayer1 = temp[0];
 		this.currHandPlayer2 = temp[1];
+		
+		//startGame();
+		/*
+		currHandPlayer1.startTurn();
+		currHandPlayer2.startTurn();
+		
+		
+		System.out.println("Deck 1 has " + currHandPlayer1.getCurrHand());
+		System.out.println("Deck 2 has " + currHandPlayer2.getCurrHand());
+		
+		
+		System.out.print(currHandPlayer1.getCurrCardImg());
+		System.out.print(currHandPlayer2.getCurrCardImg());
+		*/
+		
 	}
 	
 	
@@ -46,6 +68,10 @@ public class WarGame extends Deck{
 		currHandPlayer1.startTurn();
 		currHandPlayer2.startTurn();
 		
+		System.out.println("Deck COMP has " + currHandPlayer1.getCurrCardRank()+ currHandPlayer2.getCurrCardSuit());
+		System.out.println("Deck PLAYER has " + currHandPlayer2.getCurrCardRank()+ currHandPlayer2.getCurrCardSuit());
+		
+		
 		if (currHandPlayer1.getCurrCardRank() > currHandPlayer2.getCurrCardRank()){
 			currHandPlayer1.takeCards(currHandPlayer2);
 			checkWin();
@@ -55,11 +81,17 @@ public class WarGame extends Deck{
 			checkWin();
 		}
 		else {
+			System.out.println("WAR!!!");
+			currHandPlayer1.clearCardsInPlay();
+			currHandPlayer1.clearCardsInPlay();
 			currHandPlayer1.startTurn();
 			currHandPlayer2.startTurn();
+			
 			deal();
 		}
 		
+		System.out.println("Deck COMP has " + currHandPlayer1.getCurrHand().size() +" cards left.");
+		System.out.println("Deck PLAYER PLAYER " + currHandPlayer2.getCurrHand().size() +" cards left.");
 		
 /*	    for (int i = 0; i < 52; i++) {
 	       String suit = suits[i / 13];
@@ -81,9 +113,11 @@ public class WarGame extends Deck{
 	public void checkWin(){
 		if (currHandPlayer1.getCurrHand().isEmpty()){
 			this.winner = "Computer";
+			System.out.print("Computer Wins!");
 		}
 		else if (currHandPlayer2.getCurrHand().isEmpty()){
 			this.winner = "Player";
+			System.out.print("Player Wins!");
 		}
 	}
 	
@@ -92,7 +126,7 @@ public class WarGame extends Deck{
 	}
 	public void dealCards(){
 		
-		shuffleCards();
+		//shuffleCards();
 		splitDeck();
 		deal();
 		
@@ -113,7 +147,7 @@ public class WarGame extends Deck{
 	
 	public void startGame(){
 		
-	   
+		
 				
 						
 		//create game window
@@ -226,9 +260,7 @@ public class WarGame extends Deck{
 			  	
 			  
 				     
-				newGame.addActionListener(new StartGameListener());    //add specific listener to each button
-				dealButton.addActionListener(new DealButtonListener());     
-				 
+		
 			  
 			
 				
@@ -338,8 +370,7 @@ public class WarGame extends Deck{
 	          deck2.add(back);
 	          deck2.setVisible(true);
 	          
-	          shuffleCards();
-	          deal();
+	          dealCards();
 	          
 	          
 	          
@@ -361,13 +392,21 @@ public class WarGame extends Deck{
 	    	  
 	    	  thatDeck.splitDeck(); */
 	    	  
-	    	  deal(); 
+	    	  
+	    	  oppCard.setIcon(null);
+	    	  myCard.setIcon(null);
 	    	  
 	    	  
-	    	  oppCard.setIcon((new ImageIcon("cardPics/"+currHandPlayer1.getCurrCardImg())));
+	    	  oppCard.setIcon((new ImageIcon(currHandPlayer1.getCurrCardImg())));
 	    	  oppCard.setSize(150,150);
 	    	  center.add(oppCard);
 	    	  oppCard.setVisible(true);
+	    	  
+	    	  myCard.setVisible(false);
+	    	  myCard.setIcon((new ImageIcon(currHandPlayer2.getCurrCardImg())));
+	    	  myCard.setSize(150,150);
+	    	  center.add(myCard);
+	    	  myCard.setVisible(true);
 	    	  
 	    	  currHandPlayer2.getCurrCardRank();
 	    	  
@@ -381,7 +420,10 @@ public class WarGame extends Deck{
 	{
 		
 		WarGame sG =	new WarGame();
+		
 		sG.startGame();
+		sG.dealCards();
+		//sG.deal();
 		
 		//while (sG.getWinner().equals(null)){
 			//sG.deal();

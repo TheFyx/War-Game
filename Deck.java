@@ -50,6 +50,8 @@ public class Deck extends Card{
 		Hand[] startDecks = {play1, play2};
 		
 		
+	
+		
 		return startDecks;
 	}
 	
