@@ -14,6 +14,7 @@ public class WarGame extends Deck{
 	private Hand currHandPlayer2;
 	private String winner;
 	private String imgAdd1;
+	private String imgAdd2;
 	public boolean War = false;		
 	
 	
@@ -65,8 +66,20 @@ public class WarGame extends Deck{
 	
 	
 	
+	public void setImgAdd1(String imgAdd1) {
+		this.imgAdd1 = imgAdd1;
+	}
+	
+	public void setImgAdd2(String imgAdd2) {
+		this.imgAdd2 = imgAdd2;
+	}
+	
 	public String getImgAdd1() {
 		return imgAdd1;
+	}
+	
+	public String getImgAdd2() {
+		return imgAdd2;
 	}
 	
 	
@@ -86,7 +99,12 @@ public class WarGame extends Deck{
 		currHandPlayer1.startTurn();
 		currHandPlayer2.startTurn();
 		
+		
+		setImgAdd1(currHandPlayer1.getCurrCardImg());
+		setImgAdd2(currHandPlayer2.getCurrCardImg());
+		
 		System.out.println("TESTING " + currHandPlayer1.getCurrCardImg());
+		System.out.println("TESTING " + currHandPlayer2.getCurrCardImg());
 		
 		System.out.println("Deck COMP has " + currHandPlayer1.getCurrCardRank()+ currHandPlayer1.getCurrCardSuit());
 		System.out.println("Deck PLAYER has " + currHandPlayer2.getCurrCardRank()+ currHandPlayer2.getCurrCardSuit());
@@ -98,6 +116,8 @@ public class WarGame extends Deck{
 			currHandPlayer1.warEnd();
 			//currHandPlayer2.warEnd();
 			War = false;
+			System.out.println("Deck COMP has " + currHandPlayer1.getCurrHand().size() +" cards left.");
+			System.out.println("Deck PLAYER has " + currHandPlayer2.getCurrHand().size() +" cards left.");
 			checkWin();
 		}
 		else if (currHandPlayer1.getCurrCardRank() < currHandPlayer2.getCurrCardRank()){
@@ -106,6 +126,8 @@ public class WarGame extends Deck{
 			currHandPlayer1.warEnd();
 			//currHandPlayer2.warEnd();
 			War = false;
+			System.out.println("Deck COMP has " + currHandPlayer1.getCurrHand().size() +" cards left.");
+			System.out.println("Deck PLAYER has " + currHandPlayer2.getCurrHand().size() +" cards left.");
 			checkWin();
 		}
 		else {
@@ -119,43 +141,20 @@ public class WarGame extends Deck{
 				currHandPlayer2.clearCardsInPlay();
 				System.out.println("Let's deal again!");
 				deal();
+				currHandPlayer1.clearCardsInPlay();
+				currHandPlayer2.clearCardsInPlay();
 				
 			}
 			
-			//War = false;
-			//currHandPlayer1.warEnd();
-			//currHandPlayer2.warEnd();
+			War = false;
 			
-			//currHandPlayer1.warStart();
-			//currHandPlayer2.warStart();
-			//currHandPlayer1.clearCardsInPlay();
-			//currHandPlayer2.clearCardsInPlay();
-			//currHandPlayer1.startTurn();
-			//currHandPlayer2.startTurn();
-			
-			//deal();
 		}
 		
-		System.out.println("Deck COMP has " + currHandPlayer1.getCurrHand().size() +" cards left.");
-		System.out.println("Deck PLAYER has " + currHandPlayer2.getCurrHand().size() +" cards left.");
+		
 		currHandPlayer1.clearCardsInPlay();
 		currHandPlayer2.clearCardsInPlay();
 		
-/*	    for (int i = 0; i < 52; i++) {
-	       String suit = suits[i / 13];
-	       String rank = ranks[i % 13];
-	       System.out.println( rank + " of " + suit);
-	       System.out.println("Remaining cards: " + remainingCards);
-	       
-	       
-	       
-	       for (int i = 0; i < 52; i++) {
-		       String suit = suits[i / 13];
-		       String rank = ranks[i % 13];
-		       System.out.println( rank + " of " + suit);
-		       System.out.println("Remaining cards: " + remainingCards);   
-	       
-	     }*/
+
 	   }
 
 	public void checkWin(){

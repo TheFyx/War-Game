@@ -260,7 +260,7 @@ public class WarGui extends JFrame{
 	    	  oppCard.setVisible(true);
 	    	  
 	    	  myCard.setVisible(false);
-	    	 // myCard.setIcon((new ImageIcon(wG.getCurrHandPlayer2().getCurrCardImg())));
+	    	  myCard.setIcon(new ImageIcon(wG.getImgAdd2()));
 	    	  myCard.setSize(150,150);
 	    	  center.add(myCard);
 	    	  myCard.setVisible(true);
