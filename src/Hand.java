@@ -4,6 +4,8 @@ import java.util.*;
 public class Hand {
 	ArrayList<Card> currHand = new ArrayList<Card>();
 	ArrayList<Card> cardsInPlay = new ArrayList<Card>();
+	ArrayList<Card> cardsInWar = new ArrayList<Card>();
+	
 	
 	public Hand(Card[] playerDeck){ 
 		for (int i = 0; i < playerDeck.length; i++){
@@ -16,12 +18,28 @@ public class Hand {
 		currHand.remove(0);
 	}
 	
+	public void warStart(){
+		cardsInWar.addAll(getCardsInPlay());
+		clearCardsInPlay();
+		
+	}
+	
+	
+	public void warEnd(){
+		cardsInPlay.addAll(this.getCardsInWar());
+		cardsInPlay.addAll(getCardsInWar());
+	}
+	
+	
+	
+	
 	public int getCurrCardRank(){
 		return cardsInPlay.get(0).getRank();
 	}
 	
 	public String getCurrCardSuit(){
-		return cardsInPlay.get(0).getSuit();
+		//System.out.print(cardsInPlay.get(0));
+		return this.cardsInPlay.get(0).getSuit();
 	}
 	
 	public String getCurrCardImg(){
@@ -33,6 +51,10 @@ public class Hand {
 		return cardsInPlay;
 	}
 	
+	public ArrayList<Card> getCardsInWar(){
+		return cardsInWar;
+	}
+	
 	public ArrayList<Card> getCurrHand(){
 		return currHand;
 	}
@@ -40,11 +62,20 @@ public class Hand {
 		cardsInPlay.clear();
 	}
 	
+	public void clearCardsInWar(){
+		cardsInWar.clear();
+	}
+	
+
 	public void takeCards(Hand opponent){
 		currHand.addAll(opponent.getCardsInPlay());
 		currHand.addAll(this.getCardsInPlay());
+		clearCardsInPlay();
+		currHand.addAll(getCardsInWar());
+		currHand.addAll(this.getCardsInWar());
 		opponent.clearCardsInPlay();
 		this.clearCardsInPlay();
+		clearCardsInWar();
 		
 	}
 }

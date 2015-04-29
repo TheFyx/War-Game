@@ -1,7 +1,6 @@
 import javax.swing.*;
-import java.util.*;
-import java.util.ArrayList;
 
+import java.util.*;
 import java.awt.event.*;
 import java.awt.*;
 
@@ -14,7 +13,8 @@ public class WarGame extends Deck{
 	private Hand currHandPlayer1;
 	private Hand currHandPlayer2;
 	private String winner;
-	
+	private String imgAdd1;
+	public boolean War = false;		
 	
 	
 	
@@ -35,6 +35,15 @@ public class WarGame extends Deck{
 		this.currHandPlayer1 = temp[0];
 		this.currHandPlayer2 = temp[1];
 		
+		
+		
+		
+		
+		//System.out.println((getCurrHandPlayer1().getCurrCardRank()));
+		//System.out.print("Hello world");
+		//System.out.println((getCurrHandPlayer1().getCurrCardImg()));
+		
+		
 		//startGame();
 		/*
 		currHandPlayer1.startTurn();
@@ -49,6 +58,15 @@ public class WarGame extends Deck{
 		System.out.print(currHandPlayer2.getCurrCardImg());
 		*/
 		
+	}
+	
+	
+	
+	
+	
+	
+	public String getImgAdd1() {
+		return imgAdd1;
 	}
 	
 	
@@ -68,30 +86,60 @@ public class WarGame extends Deck{
 		currHandPlayer1.startTurn();
 		currHandPlayer2.startTurn();
 		
-		System.out.println("Deck COMP has " + currHandPlayer1.getCurrCardRank()+ currHandPlayer2.getCurrCardSuit());
+		System.out.println("TESTING " + currHandPlayer1.getCurrCardImg());
+		
+		System.out.println("Deck COMP has " + currHandPlayer1.getCurrCardRank()+ currHandPlayer1.getCurrCardSuit());
 		System.out.println("Deck PLAYER has " + currHandPlayer2.getCurrCardRank()+ currHandPlayer2.getCurrCardSuit());
 		
 		
 		if (currHandPlayer1.getCurrCardRank() > currHandPlayer2.getCurrCardRank()){
 			currHandPlayer1.takeCards(currHandPlayer2);
+			
+			currHandPlayer1.warEnd();
+			//currHandPlayer2.warEnd();
+			War = false;
 			checkWin();
 		}
 		else if (currHandPlayer1.getCurrCardRank() < currHandPlayer2.getCurrCardRank()){
 			currHandPlayer2.takeCards(currHandPlayer1);
+			
+			currHandPlayer1.warEnd();
+			//currHandPlayer2.warEnd();
+			War = false;
 			checkWin();
 		}
 		else {
+			War = true;
 			System.out.println("WAR!!!");
-			currHandPlayer1.clearCardsInPlay();
-			currHandPlayer1.clearCardsInPlay();
-			currHandPlayer1.startTurn();
-			currHandPlayer2.startTurn();
+			while (War == true){
+				
+				currHandPlayer1.warStart();
+				currHandPlayer2.warStart();
+				currHandPlayer1.clearCardsInPlay();
+				currHandPlayer2.clearCardsInPlay();
+				System.out.println("Let's deal again!");
+				deal();
+				
+			}
 			
-			deal();
+			//War = false;
+			//currHandPlayer1.warEnd();
+			//currHandPlayer2.warEnd();
+			
+			//currHandPlayer1.warStart();
+			//currHandPlayer2.warStart();
+			//currHandPlayer1.clearCardsInPlay();
+			//currHandPlayer2.clearCardsInPlay();
+			//currHandPlayer1.startTurn();
+			//currHandPlayer2.startTurn();
+			
+			//deal();
 		}
 		
 		System.out.println("Deck COMP has " + currHandPlayer1.getCurrHand().size() +" cards left.");
-		System.out.println("Deck PLAYER PLAYER " + currHandPlayer2.getCurrHand().size() +" cards left.");
+		System.out.println("Deck PLAYER has " + currHandPlayer2.getCurrHand().size() +" cards left.");
+		currHandPlayer1.clearCardsInPlay();
+		currHandPlayer2.clearCardsInPlay();
 		
 /*	    for (int i = 0; i < 52; i++) {
 	       String suit = suits[i / 13];
@@ -126,7 +174,7 @@ public class WarGame extends Deck{
 	}
 	public void dealCards(){
 		
-		//shuffleCards();
+		shuffleCards();
 		splitDeck();
 		deal();
 		
@@ -145,7 +193,7 @@ public class WarGame extends Deck{
 	
 	
 	
-	public void startGame(){
+	/*public void startGame(){
 		
 		
 				
@@ -382,7 +430,7 @@ public class WarGame extends Deck{
 	   {
 	      public void actionPerformed(ActionEvent e)
 	      {
-	          /*
+	          
 	    	  Deck thatDeck = new Deck();
 	    	  
 	    	  thatDeck.splitDeck();
@@ -390,7 +438,7 @@ public class WarGame extends Deck{
 	    	  
 	    	  
 	    	  
-	    	  thatDeck.splitDeck(); */
+	    	  thatDeck.splitDeck(); 
 	    	  
 	    	  
 	    	  oppCard.setIcon(null);
@@ -414,15 +462,15 @@ public class WarGame extends Deck{
 	    	  
 	   }
 	
-	   }
-	
-	public static void main(String[] args)
+	   } 
+*/	
+/*	public static void main(String[] args)
 	{
 		
-		WarGame sG =	new WarGame();
-		
-		sG.startGame();
-		sG.dealCards();
+		//WarGame sG =	new WarGame();
+		WarGui guiWar = new WarGui();
+		//sG.startGame();
+		//sG.dealCards();
 		//sG.deal();
 		
 		//while (sG.getWinner().equals(null)){
@@ -432,6 +480,6 @@ public class WarGame extends Deck{
 	
 	
 	
-	}
+	}*/
 	   
 }
